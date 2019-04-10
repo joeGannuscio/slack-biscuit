@@ -9,7 +9,8 @@ const port = PORT || 3000
 app.post('/bug', (req, res) => {
     console.log("Command received");
     response = {
-        "text": "test"
+        "text": "boom shaka lacka",
+        "response_type": "in_channel"
 
     }
     return res.json(response);
