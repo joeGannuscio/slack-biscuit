@@ -8,15 +8,10 @@ const port = PORT || 3000
 
 app.post('/bug', (req, res) => {
     console.log("Command received");
-    const slackReqObj = req.body;
+    response = {
+        "text": "test"
 
-    const response = {
-        response_type: 'in_channel',
-        channel: slackReqObj.channel_id,
-        text: 'TEST'
-    };
-
-    console.log(slackReqObj.channel_id);
+    }
     return res.json(response);
 })
 
