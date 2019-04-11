@@ -1,15 +1,19 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var urgentBugCommand = require('./commands/urgentBug.js');
 
 var app = express();
+app.use(bodyParser.json());
 
 const {SLACK_TOKEN: slackToken, PORT} = process.env;
 const port = PORT || 3000
 
-
 app.post('/bug', (req, res) => {
     console.log("Command received");
+    var bugText = urgentBugCommand.FormatUrgentBug(req.body.text);
+
     response = {
-        "text": "boom shaka lacka",
+        "text": bugText,
         "response_type": "in_channel"
 
     }
