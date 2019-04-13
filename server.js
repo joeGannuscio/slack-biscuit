@@ -10,6 +10,14 @@ const port = PORT || 3000
 
 app.post('/bug', (req, res) => {
     console.log("Command received");
+
+    if(req.body.token != slackToken)
+    {
+        console.log("Invalid token");
+        res.status(500);
+        return;
+    }
+
     var bugText = urgentBugCommand.FormatUrgentBug(req.body.text);
 
     response = {
